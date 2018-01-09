@@ -10,3 +10,26 @@ const mockUser = {
   name: 'Name',
   username: 'username'
 }
+
+describe('User', function() {
+  let transaction;
+
+  beforeEach(done => {
+    bookshelf.transaction(t => {
+      transaction = t
+      done()
+    })
+  })
+
+  afterEach(function() {
+    return transaction.rollback()
+  })
+
+  it('saves a record to the database', function() {
+    return User.forge()
+      .save(mockUser, { transacting: transaction })
+      .then(user => {
+        expect(user.get('id')).to.be.a('number')
+      })
+  })
+})
