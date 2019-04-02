@@ -13,16 +13,16 @@ const app = express();
 
 app.use(bodyParser.json());
 
-// Configure & Initialize Bookshelf & Knex.
+
 console.log(`Running in environment: ${ENV}`);
 
-// ***** Models ***** //
+
 
 const Comment = require('./models/comment');
 const Post = require('./models/post');
 const User = require('./models/user');
 
-// ***** Server ***** //
+
 
 app.get('/user/:id', (req,res) => {
   User
@@ -111,7 +111,7 @@ app.post('/comment', (req, res) => {
     });
 });
 
-// Exports for Server Hoisting.
+
 
 const listen = (port) => {
   return new Promise((resolve, reject) => {
