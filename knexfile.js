@@ -1,6 +1,7 @@
 module.exports = {
   test: {
     client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
       filename: 'learnco_blog_test'
     },
@@ -11,6 +12,7 @@ module.exports = {
 
   development: {
     client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
       filename: 'learnco_blog'
     },

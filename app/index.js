@@ -4,12 +4,17 @@ const express = require('express');
 const knex = require('knex');
 
 const ENV = process.env.NODE_ENV || 'development';
-
+console.log('###ENV:' + ENV);
 const config = require('../knexfile');
+console.log('###config:' + JSON.stringify(config));
+
+console.log('###config[ENV]:' + JSON.stringify(config[ENV]));
 const db = knex(config[ENV]);
+console.log('###db:' + JSON.stringify(db));
 
 // Initialize Express.
 const app = express();
+console.log('###app:' + JSON.stringify(app));
 
 app.use(bodyParser.json());
 
